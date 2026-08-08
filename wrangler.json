@@ -1,15 +1,32 @@
 {
-	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "idea",
-	"main": "./src/worker/index.ts",
-	"compatibility_date": "2025-10-08",
-	"compatibility_flags": ["nodejs_compat"],
-	"observability": {
-		"enabled": true
-	},
-	"upload_source_maps": true,
-	"assets": {
-		"directory": "./dist/client",
-		"not_found_handling": "single-page-application"
-	}
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "idea",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-08-08",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  "upload_source_maps": true,
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ideh-db",
+      "database_id": "ideh-db"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "REMOTE_KV",
+      "id": "ideh-remote-kv"
+    }
+  ],
+  "vars": {
+    "ZAI_API_KEY": "hn_bb36e4976b3f37054e52aa2e6a669fa4",
+    "ZAI_BASE_URL": "https://acdc.space-z.ai/api/v1"
+  }
 }
