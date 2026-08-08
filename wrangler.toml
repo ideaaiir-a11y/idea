@@ -1,10 +1,20 @@
-{
-  "main": ".open-next/worker.js",
-  "name": "idea",
-  "compatibility_date": "2026-08-08",
-  "compatibility_flags": ["nodejs_compat"],
-  "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
-  }
-}
+name = "idea"
+main = ".next/standalone/server.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[build]
+command = "npm run build"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "idea-db"
+database_id = "idea-db"
+
+[[kv_namespaces]]
+binding = "REMOTE_KV"
+id = "idea-remote-kv"
+
+[vars]
+ZAI_API_KEY = "hn_bb36e4976b3f37054e52aa2e6a669fa4"
+ZAI_BASE_URL = "https://acdc.space-z.ai/api/v1"
