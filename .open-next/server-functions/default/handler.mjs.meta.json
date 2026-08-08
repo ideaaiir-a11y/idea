@@ -5957,7 +5957,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/chunks/[root-of-the-server]__1e35wsj._.js": {
-      "bytes": 13514,
+      "bytes": 13537,
       "imports": [
         {
           "path": "crypto",
@@ -6140,7 +6140,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/chunks/[root-of-the-server]__0usvxt-._.js": {
-      "bytes": 16637,
+      "bytes": 16660,
       "imports": [
         {
           "path": "crypto",
@@ -6216,7 +6216,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/chunks/[root-of-the-server]__0e0ko43._.js": {
-      "bytes": 13075,
+      "bytes": 13098,
       "imports": [
         {
           "path": "crypto",
@@ -10824,7 +10824,7 @@
           "bytesInOutput": 245
         },
         ".open-next/server-functions/default/.next/server/chunks/[root-of-the-server]__1e35wsj._.js": {
-          "bytesInOutput": 16207
+          "bytesInOutput": 16230
         },
         ".open-next/server-functions/default/.next/server/chunks/_next-internal_server_app_api_remote-access_route_actions_0326kf-.js": {
           "bytesInOutput": 282
@@ -10845,7 +10845,7 @@
           "bytesInOutput": 263
         },
         ".open-next/server-functions/default/.next/server/chunks/[root-of-the-server]__0usvxt-._.js": {
-          "bytesInOutput": 20326
+          "bytesInOutput": 20349
         },
         ".open-next/server-functions/default/.next/server/chunks/_01b_pkb._.js": {
           "bytesInOutput": 13449
@@ -10857,7 +10857,7 @@
           "bytesInOutput": 405
         },
         ".open-next/server-functions/default/.next/server/chunks/[root-of-the-server]__0e0ko43._.js": {
-          "bytesInOutput": 16073
+          "bytesInOutput": 16096
         },
         ".open-next/server-functions/default/.next/server/chunks/_next-internal_server_app_api_v1_models_route_actions_0jrirco.js": {
           "bytesInOutput": 275
@@ -11112,7 +11112,7 @@
           "bytesInOutput": 60165
         }
       },
-      "bytes": 5995322
+      "bytes": 5995391
     }
   }
 }

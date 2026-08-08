@@ -26,7 +26,7 @@ function generateApiKey(): string {
 
 async function getKV(): Promise<any | null> {
   try {
-    const kv = (globalThis as any).REMOTE_KV;
+    const kv = (globalThis as any).KV_BINDING || (globalThis as any).REMOTE_KV;
     if (kv) return kv;
   } catch {
     // ignore

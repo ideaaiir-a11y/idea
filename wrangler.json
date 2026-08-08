@@ -10,19 +10,20 @@
   "upload_source_maps": true,
   "assets": {
     "directory": ".open-next/assets",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
   },
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "ideh-db",
-      "database_id": "ideh-db"
+      "database_name": "idea",
+      "database_id": "f3fba48e-4718-4cf2-8f07-2f0ce9a1a541"
     }
   ],
   "kv_namespaces": [
     {
-      "binding": "REMOTE_KV",
-      "id": "ideh-remote-kv"
+      "binding": "KV_BINDING",
+      "id": "49ca242930ac476fad471ba8dce7426a"
     }
   ],
   "vars": {
