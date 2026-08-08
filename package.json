@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "prebuild": "prisma generate",
-    "build": "next build && node scripts/copy-standalone.js",
+    "build": "npm install --force && next build && node scripts/copy-standalone.js",
     "start": "node .next/standalone/server.js",
+    "deploy": "wrangler pages project upload",
     "lint": "eslint .",
     "db:push": "prisma db push --accept-data-loss",
     "db:generate": "prisma generate",
@@ -19,7 +20,6 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@hookform/resolvers": "^5.1.1",
     "@mdxeditor/editor": "^4.2.0",
-    "@opennextjs/cloudflare": "^1.20.2",
     "@prisma/adapter-d1": "^7.9.1",
     "@prisma/client": "^6.11.1",
     "@radix-ui/react-accordion": "^1.2.11",
@@ -80,6 +80,7 @@
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^11.1.0",
     "vaul": "^1.1.2",
+    "wrangler": "^4.120.0",
     "z-ai-web-dev-sdk": "^0.0.18",
     "zod": "^4.0.2",
     "zustand": "^5.0.6"
