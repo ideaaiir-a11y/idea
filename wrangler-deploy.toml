@@ -1,0 +1,5 @@
+name = "idea"
+main = ".open-next/worker.js"
+compatibility_date = "2025-08-08"
+compatibility_flags = ["nodejs_compat"]
+assets = { directory = "dist/client" }
