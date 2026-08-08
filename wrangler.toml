@@ -1,4 +1,4 @@
-name = "ideh"
+name = "idea"
 main = ".next/standalone/server.js"
 compatibility_date = "2024-01-01"
 compatibility_flags = ["nodejs_compat"]
@@ -8,12 +8,12 @@ command = "npm run build"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "ideh-db"
-database_id = "ideh-db"
+database_name = "idea-db"
+database_id = "idea-db"
 
 [[kv_namespaces]]
 binding = "REMOTE_KV"
-id = "ideh-remote-kv"
+id = "idea-remote-kv"
 
 [vars]
 ZAI_API_KEY = "hn_bb36e4976b3f37054e52aa2e6a669fa4"
