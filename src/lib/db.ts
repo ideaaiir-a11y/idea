@@ -5,6 +5,8 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
 }
 
+let prismaInstance: PrismaClient | null = null;
+
 function createPrismaClient() {
   // Check if running on Cloudflare Workers with D1 binding
   const d1 = (globalThis as any).DB
@@ -19,8 +21,12 @@ function createPrismaClient() {
   })
 }
 
-export const db =
-  globalForPrisma.prisma ??
-  createPrismaClient()
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = db
+export function getDb() {
+  if (!prismaInstance) {
+    prismaInstance = createPrismaClient()
+    if (process.env.NODE_ENV !== 'production') {
+      globalForPrisma.prisma = prismaInstance
+    }
+  }
+  return prismaInstance
+}

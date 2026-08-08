@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import {
   getZAI,
   buildMessages,
@@ -123,17 +123,17 @@ export async function POST(req: NextRequest) {
   let isNewConversation = false;
   try {
     if (!conversationId) {
-      const conv = await db.conversation.create({
+      const conv = await getDb().conversation.create({
         data: { personaId: persona.id, title: "گفت‌وگوی جدید" },
       });
       conversationId = conv.id;
       isNewConversation = true;
     } else {
-      const existing = await db.conversation.findUnique({
+      const existing = await getDb().conversation.findUnique({
         where: { id: conversationId },
       });
       if (!existing) {
-        const conv = await db.conversation.create({
+        const conv = await getDb().conversation.create({
           data: { personaId: persona.id, title: "گفت‌وگوی جدید" },
         });
         conversationId = conv.id;
@@ -151,11 +151,11 @@ export async function POST(req: NextRequest) {
   // Handle editing: delete the edited message and all messages after it.
   if (body.editMessageId) {
     try {
-      const editedMsg = await db.message.findUnique({
+      const editedMsg = await getDb().message.findUnique({
         where: { id: body.editMessageId },
       });
       if (editedMsg && editedMsg.conversationId === conversationId) {
-        await db.message.deleteMany({
+        await getDb().message.deleteMany({
           where: {
             conversationId,
             createdAt: { gte: editedMsg.createdAt },
@@ -167,7 +167,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  const priorMessages = await db.message.findMany({
+  const priorMessages = await getDb().message.findMany({
     where: { conversationId },
     orderBy: { createdAt: "asc" },
   });
@@ -178,7 +178,7 @@ export async function POST(req: NextRequest) {
     ? `${userMessage}\n\n[_تصویر: ${images.length} تصویر پیوست شده_]`
     : userMessage;
 
-  await db.message.create({
+  await getDb().message.create({
     data: { conversationId, role: "user", content: storedUserContent },
   });
 
@@ -232,7 +232,7 @@ export async function POST(req: NextRequest) {
   if (isNewConversation || priorMessages.length === 0) {
     generateTitle(userMessage, useCustom ? provider : undefined)
       .then((title) =>
-        db.conversation.update({ where: { id: conversationId }, data: { title } })
+        getDb().conversation.update({ where: { id: conversationId }, data: { title } })
       )
       .catch(() => {});
   }
@@ -407,7 +407,7 @@ export async function POST(req: NextRequest) {
 
         // Persist assistant message
         if (assistantContent.trim().length > 0) {
-          await db.message.create({
+          await getDb().message.create({
             data: {
               conversationId,
               role: "assistant",
@@ -418,7 +418,7 @@ export async function POST(req: NextRequest) {
                   : null,
             },
           });
-          await db.conversation.update({
+          await getDb().conversation.update({
             where: { id: conversationId },
             data: { updatedAt: new Date() },
           });

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { getPersona } from "@/lib/personas";
 import {
   generateConversationPdf,
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const conversation = await db.conversation.findUnique({
+    const conversation = await getDb().conversation.findUnique({
       where: { id: conversationId },
       include: { messages: { orderBy: { createdAt: "asc" } } },
     });

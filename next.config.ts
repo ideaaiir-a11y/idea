@@ -7,9 +7,7 @@ const nextConfig: NextConfig = {
   },
   typescript: { ignoreBuildErrors: true },
   reactStrictMode: false,
-  experimental: {
-    serverComponentsExternalPackages: ["pdfkit"],
-  },
+  serverExternalPackages: ["pdfkit"],
   // Ensure env vars are available in build
   env: {
     ZAI_API_KEY: process.env.ZAI_API_KEY,

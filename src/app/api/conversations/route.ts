@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
-    const conversations = await db.conversation.findMany({
+    const conversations = await getDb().conversation.findMany({
       orderBy: [{ pinned: "desc" }, { updatedAt: "desc" }],
       take: 200,
       include: {
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json().catch(() => ({}));
     const personaId = body?.personaId ?? "default";
     const title = body?.title ?? "New Chat";
-    const conv = await db.conversation.create({
+    const conv = await getDb().conversation.create({
       data: { personaId, title },
     });
     return NextResponse.json({ conversation: conv });

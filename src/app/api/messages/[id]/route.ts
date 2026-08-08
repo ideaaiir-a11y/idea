@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -50,7 +50,7 @@ export async function PATCH(
   }
 
   try {
-    const updated = await db.message.update({
+    const updated = await getDb().message.update({
       where: { id },
       data,
     });

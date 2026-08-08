@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -10,7 +10,7 @@ export async function GET(
 ) {
   const { id } = await params;
   try {
-    const conversation = await db.conversation.findUnique({
+    const conversation = await getDb().conversation.findUnique({
       where: { id },
       include: { messages: { orderBy: { createdAt: "asc" } } },
     });
@@ -52,7 +52,7 @@ export async function PATCH(
     } else if (body.folder === null) {
       data.folder = null;
     }
-    const updated = await db.conversation.update({
+    const updated = await getDb().conversation.update({
       where: { id },
       data,
     });
@@ -72,7 +72,7 @@ export async function DELETE(
 ) {
   const { id } = await params;
   try {
-    await db.conversation.delete({ where: { id } });
+      await getDb().conversation.delete({ where: { id } });
     return NextResponse.json({ success: true });
   } catch (e) {
     console.error("Delete conversation error:", e);

@@ -1,19 +1,20 @@
 name = "idea"
-main = ".next/standalone/server.js"
-compatibility_date = "2024-01-01"
+main = ".open-next/worker.js"
+compatibility_date = "2026-08-08"
 compatibility_flags = ["nodejs_compat"]
 
-[build]
-command = "npm run build"
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "idea-db"
-database_id = "idea-db"
+database_name = "ideh-db"
+database_id = "ideh-db"
 
 [[kv_namespaces]]
 binding = "REMOTE_KV"
-id = "idea-remote-kv"
+id = "ideh-remote-kv"
 
 [vars]
 ZAI_API_KEY = "hn_bb36e4976b3f37054e52aa2e6a669fa4"
